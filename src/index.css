@@ -1,0 +1,12 @@
+:root{
+  --dark:#0D0D0D;
+  --light--green: #478C45;
+  --dark--green: #3A7338;
+  --light--gray: #E0F2DF;
+  --dark--gray: #B1D9B0;
+}
+
+html{
+  position: fixed;
+  top: 0;right: 0;bottom: 0;left: 0;
+}
