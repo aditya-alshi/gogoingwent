@@ -7,6 +7,59 @@
 }
 
 html{
+  font-size: 62.5%;
   position: fixed;
   top: 0;right: 0;bottom: 0;left: 0;
+  overflow-x: hidden;
+}
+
+body{
+  height: 100vh;
+  overflow-y: auto;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.hotel--listing--app> *{
+  font-size: 1.5rem;
+}
+
+.hotel--app--wrapper{
+  width: 100%;
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.listing--wrapper{
+  font-size: 1.4rem;
+  margin-left: 1rem;
+  flex: 1fr;
+}
+
+.hotel--name{
+  font-weight: bold;
+}
+
+.hotel--card{
+  margin-top: 0.3rem;
+  border: 0.1rem solid black;
+  padding: 1rem;
+}
+
+.amenities--wrapper{
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 8rem));
+}
+
+.amenities--wrapper .amenities{
+  border: 0.01rem solid var(--dark);
+  margin: 0.1rem;
+  padding: 0.1rem;
 }

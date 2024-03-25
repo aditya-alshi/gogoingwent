@@ -9,12 +9,15 @@ const client = new MongoClient(uri);
  async function findWithId(query, option){
     try{
        await client.connect();
-       const database = await client.db('sample_airbnb');
-       const collection = await database.collection('listingsAndReviews');
-       const cursor = await collection.find(query,option).limit(1);
+       const database =  client.db('sample_airbnb');
+       const collection =  database.collection('listingsAndReviews');
+       const cursor =  collection.find(query,option).limit(10);
        let result = []
-       for await (items of cursor){
-        result.push(items);
+       for await (let items of cursor){
+        if(items._id){
+            items._id = parseInt(items._id)
+            result.push(items);
+        }
        }
 
        return result;

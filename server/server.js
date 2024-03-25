@@ -15,7 +15,7 @@ app.get('/airbnbHotelsListings', (req, res)=>{
 
     const option = {
         projection: {
-            _id:0,
+            _id:1,
             "images.picture_url": 1,
             amenities: 1,
             name:1,
