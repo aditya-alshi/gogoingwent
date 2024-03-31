@@ -1,9 +1,9 @@
 import { filterReducer } from "./features/filters/filtersSlice";
+import { listingReducer } from "./features/listing-section/listingSlice";
 
 export default function rootReducer(state, action){
     return {
         ...state,
-        filter: filterReducer(state.filter, action),
-        
+        listing: listingReducer(state, action)
     }
 }

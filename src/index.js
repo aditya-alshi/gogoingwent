@@ -5,10 +5,16 @@ import App from './App';
 import store from './store';
 import { Provider } from 'react-redux';
 
+import { sto } from './store';
+import { fetchListingThunk } from './features/listing-section/listingSlice';
+
+sto.dispatch(fetchListingThunk())
+
+// console.log(fetchListingThunk.fulfilled());
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider store={sto}>
       <App />
     </Provider>
   </React.StrictMode>

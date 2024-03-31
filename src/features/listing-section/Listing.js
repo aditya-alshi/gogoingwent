@@ -1,26 +1,36 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchHotes } from "./listingSlice";
+import { createSelector } from "@reduxjs/toolkit";
 
-const listingSelector = state => state.listing
+const listingSelector = state => state.listing.entities
+
+
+const theLisitngs = createSelector(
+    state => state.listing,
+    listing => listing.entities
+    // state => state.filters.country,
+    // state => state.filters.amenities,
+    // state => state.filters.roomtype,
+    // (entities,country, amenities, roomtype)=>{
+    //     if(country.length && amenities.length && roomtype.length === 0){
+    //         return entities
+    //     }
+    // }
+)
 
 export default function Listing(){
     // const [listing, setListings] = React.useState([]);
+    const dispatch = useDispatch();
 
-    const  listing= useSelector(listingSelector)
+    const  listing= useSelector(theLisitngs)
 
-    // React.useEffect(()=>{
-    //     const fetchHotelListing = async ()=>{
-    //         const url = "http://localhost:8000/airbnbHotelsListings";
-    //         const response = await fetch(url);
-    //         const responseJSONParsed = await response.json();
-    //         setListings(responseJSONParsed)
-    //         console.log(responseJSONParsed);
-    //     }
-    //     fetchHotelListing();
-    // }, [])
+    React.useEffect(()=>{
+        dispatch(fetchHotes)
+    }, [])
 
     const listingRenderer = listing.map(hotel=>(
-        <div key={parseInt(hotel.id)} className="hotel--card">
+        <div key={parseInt(hotel._id)} className="hotel--card">
             <p className="hotel--name">{hotel.name}</p>
             <div className="amenities--wrapper">
                 {hotel.amenities.map((item,index)=>(

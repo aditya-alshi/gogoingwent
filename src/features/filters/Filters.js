@@ -1,6 +1,5 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-const filterSelect = (state) => state.filter;
 
 const checkboxDispatcher = (type, payload) => ({
   type,
@@ -10,26 +9,50 @@ const checkboxDispatcher = (type, payload) => ({
 export default function Filters(){
     const dispatch = useDispatch();
 
+  
+  const [filter, setFilter] = React.useState({
+    country: {
+        Brazil: false,
+        England: false,
+        Germany: false
+    },
+    amenities:{
+        TV: false,
+        Wifi: false,
+        airConditioning: false,
+        Pool: false,
+        Kitchen: false,
+        Elevator: false,
+        Washer: false,
+    },
+    roomType: {
+        privateRoom: false,
+        entireRoom: false,
+    }
+})
 
-  const { 
-    Brazil, England,
 
-    TV, 
-    Wifi, 
-    airConditioning, 
-    Pool, 
-    Kitchen, 
-    Elevator, 
-    Washer,
-    
-    privateRoom,
-    entireRoom
-  } = useSelector(filterSelect);
- 
-
-  function handleCheckboxChange(e) {
+  function handleCountryCheckboxChange(e) {
     const name = e.target.name;
-    dispatch(checkboxDispatcher("filter/filterToggled", name));
+    // dispatch(checkboxDispatcher("filter/countryToggled", name));
+  }
+
+  function handleAmenitiesCheckboxChange(e) {
+    console.log(e.target.id);
+    const name = e.target.name;
+    setFilter(prev=>({
+      ...prev,
+      amenities: {
+        ...prev.amenities,
+        [name] : !prev.amenities[name]
+      }
+    }))
+    // dispatch(checkboxDispatcher("filter/amenitiesToggled", filter.amenities));
+  }
+  
+  function handleRoomTypeCheckboxChange(e) {
+    const name = e.target.name;
+    // dispatch(checkboxDispatcher("filter/roomTypeToggled", name));
   }
 
   return (
@@ -38,8 +61,8 @@ export default function Filters(){
         <div className="country--filter" style={{ border: "1px solid black" }}>
           <input
             type="checkbox"
-            checked={Brazil ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.country.Brazil ? true : false}
+            onChange={handleCountryCheckboxChange}
             id="Brazil"
             name="Brazil"
           />
@@ -47,8 +70,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={England ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.country.England ? true : false}
+            onChange={handleCountryCheckboxChange}
             id="England"
             name="England"
           />
@@ -61,8 +84,8 @@ export default function Filters(){
         >
           <input
             type="checkbox"
-            checked={TV ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.TV ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="TV"
             name="TV"
           />
@@ -70,8 +93,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={Wifi ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.Wifi ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="Wifi"
             name="Wifi"
           />
@@ -79,17 +102,17 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={airConditioning ? true : false}
-            onChange={handleCheckboxChange}
-            id="airConditioning"
+            checked={filter.amenities.airConditioning ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
+            id="Air Conditioning"
             name="airConditioning"
           />
           <label htmlFor="airConditioning">airConditioning</label>
           <br />
           <input
             type="checkbox"
-            checked={Pool ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.Pool ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="Pool"
             name="Pool"
           />
@@ -97,8 +120,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={Kitchen ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.Kitchen ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="Kitchen"
             name="Kitchen"
           />
@@ -106,8 +129,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={Elevator ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.Elevator ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="Elevator"
             name="Elevator"
           />
@@ -115,8 +138,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={Washer ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.amenities.Washer ? true : false}
+            onChange={handleAmenitiesCheckboxChange}
             id="Washer"
             name="Washer"
           />
@@ -124,11 +147,11 @@ export default function Filters(){
           <br />
         </div>
         <br />
-        <div className="country--filter" style={{ border: "1px solid black" }}>
+        <div className="roomType--filter" style={{ border: "1px solid black" }}>
           <input
             type="checkbox"
-            checked={privateRoom ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.roomType.privateRoom ? true : false}
+            onChange={handleRoomTypeCheckboxChange}
             id="Private Room"
             name="privateRoom"
           />
@@ -136,8 +159,8 @@ export default function Filters(){
           <br />
           <input
             type="checkbox"
-            checked={entireRoom ? true : false}
-            onChange={handleCheckboxChange}
+            checked={filter.roomType.entireRoom ? true : false}
+            onChange={handleRoomTypeCheckboxChange}
             id="Entire Room"
             name="entireRoom"
           />
