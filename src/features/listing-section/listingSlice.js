@@ -1,34 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-export async function fetchHotes(dispatch, getState){
-    const url = "http://localhost:8000/airbnbHotelsListings";
-    const response = await fetch(url);
-    const responseJSONParsed = await response.json();
-    dispatch({type: "listing/listingLoaded", payload: responseJSONParsed})
-}
+
 
 export const fetchListingThunk = createAsyncThunk('hotel/listing', async()=>{
-    const url = "http://localhost:8000/airbnbHotelsListings";
-    const response = await fetch(url);
-    const responseJSONParsed = await response.json();
-    return responseJSONParsed
+    return new Promise(resolve=>{
+        {
+            setTimeout(async ()=>{
+                const url = "http://localhost:8000/airbnbHotelsListings";
+                const response = await fetch(url);
+                const responseJSONParsed = await response.json();
+                resolve(responseJSONParsed) 
+    
+            }, 4000)
+        }
+    })
 })
 
-export function listingReducer(state, action){
-    switch(action.type){
-        case "filter/amenitiesToggled":
-            // return filterTheList(action.payload, state.listing)
-        
-        case "listing/listingLoaded":
-            return action.payload
 
-        default:
-            return state.listing
-    }
-}
 
 const initialState = {
-    status : 'idle',
+    status : 'loading',
     entities: [
         {
             "_id": 10030955,
@@ -129,11 +120,35 @@ const listingSlice = createSlice({
     reducers:{},
     extraReducers: builder =>{
         builder
+        .addCase(fetchListingThunk.pending, (state, action)=>{
+            state.status = "loading"
+        })
         .addCase(fetchListingThunk.fulfilled, (state, action)=>{
             // console.log(action.payload);
             state.entities = action.payload;
+            state.status = 'idle'
         })
     }
 })
 
 export default listingSlice.reducer;
+
+
+// export async function fetchHotes(dispatch, getState){
+//     const url = "http://localhost:8000/airbnbHotelsListings";
+//     const response = await fetch(url);
+//     const responseJSONParsed = await response.json();
+//     dispatch({type: "listing/listingLoaded", payload: responseJSONParsed})
+// }
+// export function listingReducer(state, action){
+//     switch(action.type){
+//         case "filter/amenitiesToggled":
+//             // return filterTheList(action.payload, state.listing)
+        
+//         case "listing/listingLoaded":
+//             return action.payload
+
+//         default:
+//             return state.listing
+//     }
+// }

@@ -7,11 +7,11 @@ import listingReducer from "./features/listing-section/listingSlice";
 
 
 
-const preloadedState = {
-    listing:[]
-}
+// const preloadedState = {
+//     listing:[]
+// }
 
-const thunKEnhancer = applyMiddleware(thunk)
+// const thunKEnhancer = applyMiddleware(thunk)
 
 
 export const sto = configureStore({
@@ -21,5 +21,5 @@ export const sto = configureStore({
     }
 })
 
-const store = createStore(rootReducer, preloadedState, thunKEnhancer);
-export default store;
+// const store = createStore(rootReducer, preloadedState, thunKEnhancer);
+export default sto;

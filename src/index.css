@@ -63,3 +63,11 @@ body{
   margin: 0.1rem;
   padding: 0.1rem;
 }
+
+.listing--loader--card{
+  border: 0.1rem solid black;
+  min-width: 40rem;
+  min-height: 15rem;
+  background-color:var(--light--gray);
+  color: silver;
+}
