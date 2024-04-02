@@ -55,7 +55,7 @@ body{
 .amenities--wrapper{
   margin: 1rem;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(auto, 8rem));
+  grid-template-columns: repeat(auto-fill, minmax(auto, auto));
 }
 
 .amenities--wrapper .amenities{
