@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
+
 :root{
   --dark:#0D0D0D;
   --light--green: #478C45;
@@ -16,52 +20,233 @@ html{
 body{
   height: 100vh;
   overflow-y: auto;
+  background-color: var(--light--gray);
 }
 
 *{
+  font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.hotel--listing--app> *{
+h1.the--main--title{
+  padding: 3rem 0;
+  font-size: 5rem;
+  letter-spacing: 0.5rem;
+  color: var(--light--green);
+  text-align: center;
+}
+
+header.header--wrapper{
+  padding: 1.2rem 1.6rem;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--dark--green);
+}
+
+header div.logo{
+  width: 22rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  cursor: pointer;
+}
+
+header div.logo .logo--image{
+  max-width: 4rem;
+}
+
+header span.header--logo--title{
+  cursor: pointer;
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+
+header nav.navigations{
+  width: 30rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 1.8rem;
+  color: white;
+}
+
+header nav.navigations span.navigation--buttons{
+  cursor: pointer;
+}
+
+header div.header--right--side{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 40rem;
+  font-size: 1.6rem;
+  color: white;
+}
+
+header div.header--right--side div{
+  border: 0.2rem solid white;
+  padding: 1.1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+}
+
+header div.header--right--side div.become--expert--button{
+  background-color: white;
+  color: var(--dark--green);
+}
+
+header div.header--right--side div.signIn--register--button:hover{
+  background-color: white;
+  color: var(--dark--green);
+}
+
+.filters> *{
   font-size: 1.5rem;
+  width: 20rem;
+}
+
+.filters{
+  padding: 2rem;
+  /* margin-right: 2rem; */
+}
+
+.filters > div{
+  padding: 0.5rem;
+  box-shadow: 0 -0.7rem 0.1rem -0.6rem #00000030;
+}
+
+.filters p.filter--title{
+  font-size: larger;
+  font-weight: 500;
+}
+
+label{
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  width: 100%;
+  column-gap: 1rem;
+}
+
+input[type=checkbox]:checked{
+  accent-color: var(--light--green);
 }
 
 .hotel--app--wrapper{
-  width: 100%;
-  /* margin: auto; */
+  margin: auto;
+  /* width: 95%; */
   display: flex;
   justify-content: center;
-  padding: 2rem;
+  padding: 3rem;
+  background-color: white;
 }
 
 .listing--wrapper{
   font-size: 1.4rem;
   margin-left: 1rem;
-  flex: 1fr;
+  max-width: 90rem;
+  flex: 1;
 }
 
-.hotel--name{
-  font-weight: bold;
+.listing--wrapper .number--of--results{
+  text-align: right;
 }
 
 .hotel--card{
   margin-top: 0.3rem;
-  border: 0.1rem solid black;
-  padding: 1rem;
+  /* border: 0.1rem solid black; */
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 -0.7rem 0.1rem -0.6rem #00000030;
+}
+
+
+
+.hotel--image--wrapper{
+  height: 25rem;
+  width: 25rem;
+}
+
+.hotel--image--wrapper .hotel--image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.hotel--card .hotel--details{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-right: auto;
+  margin-left: 3rem;
+}
+
+.hotel--name{
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.7rem;
+}
+
+.hotel--street{
+  font-weight: 200;
+  font-style: normal;
+  margin-top: 0.3rem;
+  /* margin-bottom:auto; */
+}
+
+.hotel--market{
+  margin-bottom: auto;
+  margin-top: 4.8rem;
+}
+
+.hotel--card .hotel--pricing{
+  margin-left: auto;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hotel--card .hotel--pricing .hotel--price{
+  margin-top: auto;
+  margin-bottom: 1rem;
+}
+
+.hotel--reviews{
+  font-weight: 200;
+  font-style: normal;
+}
+
+.hotel--taxCharges{
+  font-size: small;
+  font-weight: 100;
+  font-style: normal;
 }
 
 .amenities--wrapper{
-  margin: 1rem;
+  margin: 1rem 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(auto, auto));
+  grid-template-columns: repeat(auto-fill, minmax(10rem, auto));
 }
 
 .amenities--wrapper .amenities{
-  border: 0.01rem solid var(--dark);
-  margin: 0.1rem;
-  padding: 0.1rem;
+  display: flex;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 0.1rem var(--dark--green);
+  margin-right: 0.5rem;
+  margin-top: 0.3rem;
+  padding: 0.5rem;
+  min-width: 10rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: small;
 }
 
 .listing--loader--card{

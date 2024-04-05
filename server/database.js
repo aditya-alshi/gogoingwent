@@ -1,8 +1,13 @@
 const { MongoClient, ServerApiVersion } = require('mongodb')
 const mongo = require('mongodb');
 const ObjectID = require('mongodb').ObjectId;
+require('dotenv').config();
 
-const uri = `mongodb+srv://combohollow:${encodeURIComponent("Qwerty@123")}@mducluster.klnmibe.mongodb.net/?retryWrites=true&w=majority&appName=mducluster`
+const USERNAME = process.env.MONGO_DB_USERNAME;
+const PASSWORD = process.env.MONGO_DB_PASSWORD;
+const CONNECTION = process.env.MONGO_DB_CONNECTION;
+
+const uri = `mongodb+srv://${USERNAME}:${encodeURIComponent(PASSWORD)}${CONNECTION}`
 
 const client = new MongoClient(uri);
 
@@ -11,7 +16,7 @@ const client = new MongoClient(uri);
        await client.connect();
        const database =  client.db('sample_airbnb');
        const collection =  database.collection('listingsAndReviews');
-       const cursor =  collection.find(query,option).limit(10);
+       const cursor =  collection.find(query,option).limit(100);
        let result = []
        for await (let items of cursor){
         if(items._id){

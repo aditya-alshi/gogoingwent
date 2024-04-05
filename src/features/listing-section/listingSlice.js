@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchListingThunk = createAsyncThunk('hotel/listing', async()=>{
     return new Promise(resolve=>{
-        {
+     
             setTimeout(async ()=>{
                 const url = "http://localhost:8000/airbnbHotelsListings";
                 const response = await fetch(url);
@@ -12,7 +12,7 @@ export const fetchListingThunk = createAsyncThunk('hotel/listing', async()=>{
                 resolve(responseJSONParsed) 
     
             }, 4000)
-        }
+        
     })
 })
 

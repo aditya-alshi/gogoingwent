@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const path = require('path');
 
 const database = require('./database');
 
@@ -28,5 +29,11 @@ app.get('/airbnbHotelsListings', (req, res)=>{
     }
     findWithId(query, option).then(result => res.json(result)).catch(err=>console.log(err.message));
 })
+const port = process.env.PORT || 8000;
 
-app.listen(8000, ()=>console.log("server listening at port 8000"));
+app.use(express.static(path.join('public')));
+app.use((req, res)=>{
+    res.sendFile(path.resolve(__dirname, "public", "index.html"))
+})
+
+app.listen(port, ()=>console.log("server listening at port 8000"));
