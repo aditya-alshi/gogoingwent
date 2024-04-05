@@ -6,7 +6,7 @@ export const fetchListingThunk = createAsyncThunk('hotel/listing', async()=>{
     return new Promise(resolve=>{
      
             setTimeout(async ()=>{
-                const url = "http://localhost:8000/airbnbHotelsListings";
+                const url = "https://ggwent.onrender.com/airbnbHotelsListings";
                 const response = await fetch(url);
                 const responseJSONParsed = await response.json();
                 resolve(responseJSONParsed) 
